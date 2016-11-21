@@ -20,3 +20,12 @@ brew update
 
 # Upgrade any already-installed formulae.
 brew upgrade
+
+# Install Homebrew Bundle
+brew tap Homebrew/bundle
+
+read -p "Install apps in Brewfile? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  brew bundle
+fi;
