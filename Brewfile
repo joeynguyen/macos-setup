@@ -29,6 +29,7 @@ brew 'node'
 brew 'noti'
 brew 'openssl'
 brew 'python'
+brew 'python3' # required for deoplete for neovim
 brew 'ruby'
 brew 'tree'
 brew 'zsh'

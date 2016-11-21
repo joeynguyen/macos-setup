@@ -81,25 +81,3 @@ if [ ! -L ~/.ackrc ]; then
   echo "Creating symlink for .ackrc..."
   ln -s ~/git/dotfiles/ackrc ~/.ackrc
 fi
-
-###############################################################################
-# Neovim                                                                      #
-###############################################################################
-
-# Create symlink for neovim config file from dotfiles repo
-if [ ! -L ~/.config/nvim/init.vim ]; then
-  echo "Creating symlink for neovim config file..."
-  if [ ! -d ~/.config/nvim ]; then
-    mkdir -p ~/.config/nvim
-  fi
-  if [ -f ~/.config/nvim/init.vim  ]; then
-    mv ~/.config/nvim/init.vim ~/.config/nvim/init.vim.bak
-  fi
-  ln -s ~/git/dotfiles/nvimrc ~/.config/nvim/init.vim
-fi
-
-# Fix for Neovim issue with Ctrl-h not being able to be remapped.
-if [ ! -f ~/$TERM.ti  ]; then
-  echo "Fix Neovim issue with Ctrl-h not being able to be remapped"
-  infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > ~/$TERM.ti && tic $TERM.ti
-fi

@@ -50,10 +50,18 @@ function runDots() {
         if [ $ARG == "cli" ] || [ $ARG == "all" ]; then
             # Run the cli.sh Script
             echo "------------------------------"
-            echo "Setting up command line environment."
+            echo "Setting up command line environment and tools."
             echo "------------------------------"
             echo ""
             ./cli.sh
+        fi
+        if [ $ARG == "neovim" ] || [ $ARG == "all" ]; then
+            # Run the neovim.sh Script
+            echo "------------------------------"
+            echo "Setting up Neovim."
+            echo "------------------------------"
+            echo ""
+            ./neovim.sh
         fi
     done
 
