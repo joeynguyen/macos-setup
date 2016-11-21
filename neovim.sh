@@ -49,3 +49,9 @@ if test $(which pip3); then
     pip3 install --user neovim
   fi
 fi
+
+# Install Vim Plug
+if [ ! -f ~/.config/nvim/autoload/plug.vim ]; then
+  echo "Installing Vim Plug..."
+  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
