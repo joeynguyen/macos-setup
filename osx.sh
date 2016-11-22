@@ -62,6 +62,7 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
+# macOS Sierra > System Preferences > Keyboard > Shortcuts > Full Keyboard Access
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
@@ -73,12 +74,12 @@ defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Enable "tap-and-a-half" to drag.
-# In macOS Sierra, this is done in System Preferences > Accessibility > Mouse & Trackpad > Trackpad Options > Enable dragging: with drag lock(?)
+# macOS Sierra > System Preferences > Accessibility > Mouse & Trackpad > Trackpad Options > Enable dragging: with drag lock(?)
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -int 1
 defaults write com.apple.AppleMultitouchTrackpad Dragging -int 1
 
 # Enable 3-finger drag. (Moving with 3 fingers in any window "chrome" moves the window.)
-# In macOS Sierra, this is done in System Preferences > Accessibility > Mouse & Trackpad > Trackpad Options > Enable dragging: three finger drag
+# macOS Sierra > System Preferences > Accessibility > Mouse & Trackpad > Trackpad Options > Enable dragging: three finger drag
 #defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
 #defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
@@ -156,6 +157,7 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 defaults write com.apple.finder EmptyTrashSecurely -bool true
 
 # Show the ~/Library folder
+# macOS Sierra > Finder > be in Home directory > click View in menu bar > Show View Options > Show Library Folder
 chflags nohidden ~/Library
 
 # Remove Dropbox’s green checkmark icons in Finder
