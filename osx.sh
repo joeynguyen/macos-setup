@@ -67,8 +67,20 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+#defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad HIDScrollZoomModifierMask -int 262144
+#defaults write com.apple.AppleMultitouchTrackpad HIDScrollZoomModifierMask -int 262144
 # Follow the keyboard focus while zoomed in
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+
+# Enable "tap-and-a-half" to drag.
+# In macOS Sierra, this is done in System Preferences > Accessibility > Mouse & Trackpad > Trackpad Options > Enable dragging: with drag lock(?)
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -int 1
+defaults write com.apple.AppleMultitouchTrackpad Dragging -int 1
+
+# Enable 3-finger drag. (Moving with 3 fingers in any window "chrome" moves the window.)
+# In macOS Sierra, this is done in System Preferences > Accessibility > Mouse & Trackpad > Trackpad Options > Enable dragging: three finger drag
+#defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+#defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
