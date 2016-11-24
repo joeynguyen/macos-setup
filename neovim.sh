@@ -19,7 +19,7 @@ fi
 # Fix for Neovim issue with Ctrl-h not being able to be remapped.
 if [ ! -f ~/$TERM.ti  ]; then
   echo "Fix Neovim issue with Ctrl-h not being able to be remapped"
-  infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > ~/$TERM.ti && tic $TERM.ti
+  infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > ~/$TERM.ti && tic ~/$TERM.ti
 fi
 
 # Check for Python 2,
