@@ -30,7 +30,8 @@ brew 'noti'
 brew 'openssl'
 brew 'python'
 brew 'python3' # required for deoplete for neovim
-brew 'ruby'
+#brew 'ruby'
+brew 'trash'
 brew 'tree'
 brew 'zsh'
 
