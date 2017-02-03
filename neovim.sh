@@ -4,6 +4,9 @@
 # Neovim                                                                      #
 ###############################################################################
 
+# TODO: Add npm install -g eslint babel-eslint eslint-plugin-react
+# Check to see if those libraries exists first
+
 # Create symlink for neovim config file from dotfiles repo
 if [ ! -L ~/.config/nvim/init.vim ]; then
   echo "Creating symlink for neovim config file..."
