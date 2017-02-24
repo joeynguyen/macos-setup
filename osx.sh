@@ -96,8 +96,9 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 900
 
-# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+# Save screenshots in JPG format (other options: BMP, GIF, JPG, PDF, TIFF)
 #defaults write com.apple.screencapture type -string "png"
+defaults write com.apple.screencapture type jpg;killall SystemUIServer
 
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
