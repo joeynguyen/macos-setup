@@ -19,6 +19,7 @@ tap 'neovim/neovim'
 
 brew 'ack'
 brew 'cmake'
+brew 'exa'
 brew 'git'
 brew 'homebrew/dupes/grep'
 brew 'icdiff'
