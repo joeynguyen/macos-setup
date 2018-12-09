@@ -12,6 +12,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # General UI/UX                                                               #
 ###############################################################################
 
+# Disable animation when switching desktops/spaces
+defaults write com.apple.universalaccess reduceMotion -bool true
+
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
 
