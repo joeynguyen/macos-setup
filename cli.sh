@@ -76,6 +76,20 @@ if [ ! -d ~/.config ]; then
   mkdir ~/.config
 fi
 
+## Tmux
+if [ ! -d ~/.config/tmux/ ]; then
+  mkdir ~/.config/tmux/
+fi
+
+if [ ! -d ~/git/oh-my-tmux ]; then
+  echo "Cloning oh-my-tmux dotfiles repo..."
+  git clone https://github.com/gpakosz/.tmux.git ~/git/oh-my-tmux/
+fi
+
+if [ ! -L ~/.config/tmux/tmux.conf ]; then
+    ln -s ~/git/oh-my-tmux/.tmux.conf ~/.config/tmux/tmux.conf
+fi
+
 if test $(which stow) && test -L ~/git/dotfiles/; then
   read -p "Run stow? (y/n) " -n 1;
   echo "";
