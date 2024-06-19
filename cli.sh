@@ -36,6 +36,14 @@ if [ ! -d ~/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+# install Spaceship prompt
+if [ ! -d $ZSH_CUSTOM/themes/spaceship-prompt ]; then
+  git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+fi
+if [ ! -L $ZSH_CUSTOM/themes/spaceship.zsh-theme ]; then
+  ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+fi
+
 # Create symlink for .zshrc from dotfiles repo
 if [ ! -L ~/.zshrc ]; then
   echo "Creating symlink for .zshrc..."
