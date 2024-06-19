@@ -7,15 +7,9 @@
 #while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ###############################################################################
-# Git                                                                         #
+# Dotfiles                                                                         #
 ###############################################################################
 
-if [ ! -d ~/git ]; then
-  echo "Creating ~/git directory..."
-  mkdir ~/git
-fi
-
-# Clone dotfiles
 if [ ! -d ~/git/dotfiles ]; then
   echo "Cloning joeynguyen/dotfiles repo..."
   git clone git@github.com:joeynguyen/dotfiles.git ~/git/dotfiles
