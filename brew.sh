@@ -21,13 +21,13 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
-BREWFILE_LOCATION='~/git/dotfiles/Brewfile'
+BREWFILE_LOCATION=$HOME/git/dotfiles/Brewfile
 
 if [ -f "$BREWFILE_LOCATION" ]; then
   read -p "Install apps in Brewfile? (y/n) " -n 1;
   echo "";
   if [[ $REPLY =~ ^[Yy]$ ]]; then
-    brew -f $BREWFILE_LOCATION install
+    brew bundle --file $BREWFILE_LOCATION install
   fi;
 else
   echo "$BREWFILE_LOCATION does not exist."
