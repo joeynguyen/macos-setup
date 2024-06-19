@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+# these should be done in this order: osxprep osx git cli brew neovim
 function runDots() {
+
     # Ask for the administrator password upfront
     #sudo -v
 
@@ -43,6 +45,14 @@ function runDots() {
             echo ""
             ./git.sh
         fi
+        if [ $ARG == "cli" ] || [ $ARG == "all" ]; then
+            # Run the cli.sh Script
+            echo "------------------------------"
+            echo "Setting up command line environment and tools."
+            echo "------------------------------"
+            echo ""
+            ./cli.sh
+        fi
         if [ $ARG == "brew" ] || [ $ARG == "all" ]; then
             # Run the brew.sh Script
             # For a full listing of installed formulae and apps, refer to
@@ -55,14 +65,6 @@ function runDots() {
             echo "------------------------------"
             echo ""
             ./brew.sh
-        fi
-        if [ $ARG == "cli" ] || [ $ARG == "all" ]; then
-            # Run the cli.sh Script
-            echo "------------------------------"
-            echo "Setting up command line environment and tools."
-            echo "------------------------------"
-            echo ""
-            ./cli.sh
         fi
         if [ $ARG == "neovim" ] || [ $ARG == "all" ]; then
             # Run the neovim.sh Script
