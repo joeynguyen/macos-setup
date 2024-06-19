@@ -12,7 +12,7 @@
 
 if [ ! -d ~/git ]; then
   echo "Creating ~/git directory..."
-  mkdir ~/git 
+  mkdir ~/git
 fi
 
 # Clone dotfiles
@@ -39,7 +39,7 @@ fi
 # Install oh-my-zsh
 if [ ! -d ~/.oh-my-zsh ]; then
   echo "Installing oh-my-zsh..."
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 # Create symlink for .zshrc from dotfiles repo
@@ -48,36 +48,43 @@ if [ ! -L ~/.zshrc ]; then
   if [ -f ~/.zshrc  ]; then
     mv ~/.zshrc ~/.zshrc.bak
   fi
-  ln -s ~/git/dotfiles/zshrc ~/.zshrc
+
+  ln -s ~/git/dotfiles/zshrc-mac ~/.zshrc
+
+else
+  echo "Symlink for ~/.zshrc already exists."
 fi
 
 # Create symlink for .profile from dotfiles repo
 if [ ! -L ~/.profile ]; then
-  if [ -f ~/.profile ]; then
+  if [ -f ~/.profile  ]; then
     mv ~/.profile ~/.profile.bak
   fi
+
   echo "Creating symlink for .profile..."
-  ln -s ~/git/dotfiles/profile ~/.profile
+  read -p "Is this a work computer? (y/n) " -n 1;
+  echo "";
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    ln -s ~/git/dotfiles/profile-mac-work ~/.profile
+  else
+    ln -s ~/git/dotfiles/profile-mac-personal ~/.profile
+  fi;
+else
+  echo "Symlink for ~/.profile already exists."
 fi
 
 ###############################################################################
 # Tools                                                                       #
 ###############################################################################
 
-# Create symlink for .warpc from dotfiles repo
-if [ ! -L ~/.warprc ]; then
-  if [ -f ~/.warprc ]; then
-    mv ~/.warprc ~/.warprc.bak
-  fi
-  echo "Creating symlink for .warpc..."
-  ln -s ~/git/dotfiles/warprc ~/.warprc
-fi
+if [ ! -d ~/.config ]; then
+  echo "Creating ~/git directory..."
+  mkdir ~/.config
 
-# Create symlink for .ackrc from dotfiles repo
-if [ ! -L ~/.ackrc ]; then
-  if [ -f ~/.ackrc ]; then
-    mv ~/.ackrc ~/.ackrc.bak
+  if test $(which stow) && test -L ~/git/dotfiles/; then
+    echo "Running stow..."
+    stow -t ~/.config ~/git/dotfiles/dotconfig
   fi
-  echo "Creating symlink for .ackrc..."
-  ln -s ~/git/dotfiles/ackrc ~/.ackrc
+else
+  echo "~/.config already exists. Nothing to do here."
 fi
