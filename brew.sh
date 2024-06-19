@@ -12,7 +12,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Install if we don't have it
 if test ! $(which brew); then
   echo "Installing homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Make sure we’re using the latest Homebrew.
@@ -21,11 +21,15 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
-# Install Homebrew Bundle
-brew tap Homebrew/bundle
+BREWFILE_LOCATION='~/git/dotfiles/Brewfile'
 
-read -p "Install apps in Brewfile? (y/n) " -n 1;
-echo "";
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  brew bundle
-fi;
+if [ -f "$BREWFILE_LOCATION" ]; then
+  read -p "Install apps in Brewfile? (y/n) " -n 1;
+  echo "";
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    brew -f $BREWFILE_LOCATION install
+  fi;
+else
+  echo "$BREWFILE_LOCATION does not exist."
+fi
+
