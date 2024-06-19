@@ -96,7 +96,10 @@ if test $(which stow) && test -L ~/git/dotfiles/; then
 
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "Running stow..."
-    stow -t ~/.config ~/git/dotfiles/dotconfig
+    # need to `cd` into the directory first because the `stow` command doesn't accept having
+    # slashes in the last argument, e.g., ~/git/dotfiles/dotconfig
+    cd ~/git/dotfiles
+    stow -t ~/.config dotconfig
   fi;
 fi
 
