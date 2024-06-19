@@ -78,13 +78,17 @@ fi
 ###############################################################################
 
 if [ ! -d ~/.config ]; then
-  echo "Creating ~/git directory..."
+  echo "Creating ~/.config directory..."
   mkdir ~/.config
+fi
 
-  if test $(which stow) && test -L ~/git/dotfiles/; then
+if test $(which stow) && test -L ~/git/dotfiles/; then
+  read -p "Run stow? (y/n) " -n 1;
+  echo "";
+
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "Running stow..."
     stow -t ~/.config ~/git/dotfiles/dotconfig
-  fi
-else
-  echo "~/.config already exists. Nothing to do here."
+  fi;
 fi
+
