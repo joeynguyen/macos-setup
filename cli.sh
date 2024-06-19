@@ -63,6 +63,14 @@ else
   echo "Symlink for ~/.zshrc already exists."
 fi
 
+if [[ ! -L ~/.zprofile && ! -f ~/.zprofile ]]; then
+  echo "Creating symlink for .zprofile..."
+
+  ln -s ~/git/dotfiles/zprofile-mac ~/.zprofile
+else
+  echo "~/.zprofile already exists."
+fi
+
 # Create symlink for .profile from dotfiles repo
 if [ ! -L ~/.profile ]; then
   if [ -f ~/.profile  ]; then
