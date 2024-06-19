@@ -18,7 +18,7 @@ fi
 # Clone dotfiles
 if [ ! -d ~/git/dotfiles ]; then
   echo "Cloning joeynguyen/dotfiles repo..."
-  git clone https://github.com/joeynguyen/dotfiles.git ~/git/dotfiles
+  git clone git@github.com:joeynguyen/dotfiles.git ~/git/dotfiles
 fi
 
 # Create symlink for .gitignore_global from dotfiles repo
