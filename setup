@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+# these should be done in this order: osxprep osx git cli brew neovim
 function runDots() {
+
     # Ask for the administrator password upfront
     #sudo -v
 
@@ -19,19 +21,6 @@ function runDots() {
             echo ""
             ./osxprep.sh
         fi
-        if [ $ARG == "brew" ] || [ $ARG == "all" ]; then
-            # Run the brew.sh Script
-            # For a full listing of installed formulae and apps, refer to
-            # the commented brew.sh source file directly and tweak it to
-            # suit your needs.
-            echo ""
-            echo "------------------------------"
-            echo "Installing Homebrew along with some common formulae and apps."
-            echo "This might awhile to complete, as some formulae need to be installed from source."
-            echo "------------------------------"
-            echo ""
-            ./brew.sh
-        fi
         if [ $ARG == "osx" ] || [ $ARG == "all" ]; then
             # Run the osx.sh Script
             # I strongly suggest you read through the commented osx.sh
@@ -47,6 +36,15 @@ function runDots() {
             echo ""
             ./osx.sh
         fi
+        if [ $ARG == "git" ] || [ $ARG == "all" ]; then
+            # Run the osxprep.sh Script
+            echo ""
+            echo "------------------------------"
+            echo "Setting up SSH Keys"
+            echo "------------------------------"
+            echo ""
+            ./git.sh
+        fi
         if [ $ARG == "cli" ] || [ $ARG == "all" ]; then
             # Run the cli.sh Script
             echo "------------------------------"
@@ -54,6 +52,19 @@ function runDots() {
             echo "------------------------------"
             echo ""
             ./cli.sh
+        fi
+        if [ $ARG == "brew" ] || [ $ARG == "all" ]; then
+            # Run the brew.sh Script
+            # For a full listing of installed formulae and apps, refer to
+            # the commented brew.sh source file directly and tweak it to
+            # suit your needs.
+            echo ""
+            echo "------------------------------"
+            echo "Installing Homebrew along with some common formulae and apps."
+            echo "This might awhile to complete, as some formulae need to be installed from source."
+            echo "------------------------------"
+            echo ""
+            ./brew.sh
         fi
         if [ $ARG == "neovim" ] || [ $ARG == "all" ]; then
             # Run the neovim.sh Script
@@ -66,7 +77,7 @@ function runDots() {
     done
 
     echo "------------------------------"
-    echo "Completed running 'setup', restart your computer to ensure all updates take effect"
+    echo "Completed running 'setup'. You may need to restart your computer to for all updates take effect."
     echo "------------------------------"
 }
 
